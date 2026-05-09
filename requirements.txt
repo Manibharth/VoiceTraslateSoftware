@@ -1,0 +1,40 @@
+# Core Framework
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Audio/Video Processing
+moviepy>=1.0.3
+pydub>=0.25.1
+librosa>=0.10.1
+soundfile>=0.12.1
+numpy>=1.24.0
+scipy>=1.11.0
+
+# Speaker Diarization
+pyannote.audio>=3.1.0
+resemblyzer>=0.1.1.dev0
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Speech-to-Text
+openai-whisper>=20231117
+
+# Translation (Google Gemini API)
+google-genai>=1.0.0
+
+# Text-to-Speech
+TTS>=0.22.0
+
+# Speaker Analysis
+praat-parselmouth>=0.4.3
+
+# Database
+sqlalchemy>=2.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+werkzeug>=3.0.0
+requests>=2.31.0
+ffmpeg-python>=0.2.0
+noisereduce>=3.0.0
+webrtcvad>=2.0.10

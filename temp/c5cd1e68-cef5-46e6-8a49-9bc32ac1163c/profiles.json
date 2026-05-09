@@ -1,0 +1,1 @@
+{"SPEAKER_00": {"gender": "Male", "age_type": "Child", "tone": "Neutral", "pitch_mean": 218.65, "pitch_std": 370.01, "speech_rate": 7.056, "voice_profile": "Child Voice", "voice_model": "tts_models/en/ljspeech/tacotron2-DDC"}}

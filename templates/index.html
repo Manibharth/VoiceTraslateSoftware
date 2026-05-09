@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoiceTranslate AI — Tamil Dubbing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<!-- ── HERO HEADER ──────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">VoiceTranslate <span>AI</span></div>
+        <div class="brand-sub">Professional Tamil Dubbing Studio</div>
+      </div>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Whisper STT</span>
+      <span class="badge">Gemini AI</span>
+      <span class="badge">Google TTS</span>
+      <span class="badge">pyannote</span>
+    </div>
+  </div>
+</header>
+
+<main class="container main-content">
+
+  <!-- ── UPLOAD PANEL ──────────────────────────────────────────────────────── -->
+  <section class="panel" id="panel-upload">
+    <div class="panel-header">
+      <div class="panel-step">01</div>
+      <div>
+        <h2 class="panel-title">Upload Media</h2>
+        <p class="panel-desc">Drop your video or audio file to begin AI translation</p>
+      </div>
+    </div>
+
+    <div class="drop-area" id="drop-area">
+      <input type="file" id="file-input" accept="video/*,audio/*" hidden/>
+      <div class="drop-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <line x1="12" y1="18" x2="12" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <polyline points="9,15 12,12 15,15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="drop-title">Drag & drop your file here</p>
+      <p class="drop-sub">MP4 · MKV · AVI · MOV · MP3 · WAV · M4A &nbsp;|&nbsp; Max 500 MB</p>
+      <button class="btn btn-ghost" onclick="document.getElementById('file-input').click()">Browse Files</button>
+    </div>
+
+    <div class="file-selected hidden" id="file-selected">
+      <div class="file-info">
+        <div class="file-thumb" id="file-thumb">🎬</div>
+        <div class="file-meta">
+          <div class="file-name" id="file-name">filename.mp4</div>
+          <div class="file-size" id="file-size">—</div>
+        </div>
+        <button class="btn-icon" onclick="resetAll()" title="Remove">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="media-preview hidden" id="media-preview">
+        <video id="preview-video" controls class="hidden"></video>
+        <audio id="preview-audio" controls class="hidden"></audio>
+      </div>
+    </div>
+
+    <!-- Language Row -->
+    <div class="lang-row">
+      <div class="lang-box">
+        <div class="lang-box-label">Source Language</div>
+        <div class="lang-options" id="src-lang-options">
+          <button class="lang-btn active" data-code="auto">🔍 Auto-detect</button>
+          <button class="lang-btn" data-code="en">🇬🇧 English</button>
+          <button class="lang-btn" data-code="ja">🇯🇵 Japanese</button>
+          <button class="lang-btn" data-code="zh-CN">🇨🇳 Chinese</button>
+          <button class="lang-btn" data-code="th">🇹🇭 Thai</button>
+          <button class="lang-btn" data-code="ta">🇮🇳 Tamil</button>
+        </div>
+      </div>
+      <div class="lang-arrow">→</div>
+      <div class="lang-box">
+        <div class="lang-box-label">Translate To</div>
+        <div class="lang-options" id="tgt-lang-options">
+          <button class="lang-btn active" data-code="ta">🇮🇳 Tamil</button>
+          <button class="lang-btn" data-code="en">🇬🇧 English</button>
+          <button class="lang-btn" data-code="ja">🇯🇵 Japanese</button>
+          <button class="lang-btn" data-code="zh-CN">🇨🇳 Chinese</button>
+          <button class="lang-btn" data-code="th">🇹🇭 Thai</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Row -->
+    <div class="settings-grid" id="settings-grid">
+      <div class="setting-item">
+        <label class="setting-label">Whisper Model</label>
+        <select class="setting-select" id="model-size">
+          <option value="tiny">Tiny — Fastest</option>
+          <option value="base" selected>Base — Balanced</option>
+          <option value="small">Small — Accurate</option>
+          <option value="medium">Medium — Best Quality</option>
+        </select>
+        <p class="setting-hint">Larger = slower but more accurate</p>
+      </div>
+      <div class="setting-item">
+        <label class="setting-label">HuggingFace Token <span class="optional">optional</span></label>
+        <input type="password" class="setting-input" id="hf-token" placeholder="hf_xxxxx (for pyannote diarization)"/>
+        <p class="setting-hint">Required for multi-speaker detection</p>
+      </div>
+      <div class="setting-item">
+        <label class="setting-label">Output Options</label>
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="include-subtitles" checked/>
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label">Burn subtitles into video</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg" id="btn-start" disabled onclick="startPipeline()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+      </svg>
+      Start AI Translation
+    </button>
+  </section>
+
+  <!-- ── PIPELINE PROGRESS ─────────────────────────────────────────────────── -->
+  <section class="panel hidden" id="panel-progress">
+    <div class="panel-header">
+      <div class="panel-step">02</div>
+      <div>
+        <h2 class="panel-title">AI Processing Pipeline</h2>
+        <p class="panel-desc" id="progress-headline">Initializing…</p>
+      </div>
+      <div class="progress-pct" id="progress-pct">0%</div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+
+    <div class="pipeline-list" id="pipeline-list">
+      <div class="pipe-step" data-step="diarizing">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Speaker Detection</div>
+          <div class="pipe-sub">Separating individual voices with pyannote.audio</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+
+      <div class="pipe-step" data-step="analyzing">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Speaker Analysis</div>
+          <div class="pipe-sub">Detecting gender, age type &amp; emotional tone</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+
+      <div class="pipe-step" data-step="transcribing">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Speech Transcription</div>
+          <div class="pipe-sub">Converting audio to text via OpenAI Whisper</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+
+      <div class="pipe-step" data-step="translating">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Tamil Translation</div>
+          <div class="pipe-sub">Translating to casual Tamil slang via Gemini AI</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+
+      <div class="pipe-step" data-step="synthesizing">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <polygon points="11,5 2,12 11,19" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <line x1="22" y1="12" x2="14" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="22" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="22" y1="17" x2="14" y2="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Voice Synthesis</div>
+          <div class="pipe-sub">Generating matched Tamil voices via Google TTS</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+
+      <div class="pipe-step" data-step="merging">
+        <div class="pipe-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pipe-info">
+          <div class="pipe-name">Final Render</div>
+          <div class="pipe-sub">Merging audio tracks &amp; burning Tamil subtitles</div>
+        </div>
+        <div class="pipe-status">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPEAKER DASHBOARD ─────────────────────────────────────────────────── -->
+  <section class="panel hidden" id="panel-speakers">
+    <div class="panel-header">
+      <div class="panel-step">03</div>
+      <div>
+        <h2 class="panel-title">Speaker Dashboard</h2>
+        <p class="panel-desc">Review detected speakers — override voices if needed</p>
+      </div>
+    </div>
+
+    <div class="speaker-cards" id="speaker-cards"></div>
+
+    <div class="transcript-panel">
+      <div class="transcript-header">
+        <h3>Full Transcript &amp; Translation</h3>
+        <div class="transcript-legend">
+          <span class="legend-dot en"></span>English
+          <span class="legend-dot ta"></span>Tamil
+        </div>
+      </div>
+      <div class="transcript-body" id="transcript-body"></div>
+    </div>
+  </section>
+
+  <!-- ── OUTPUT ───────────────────────────────────────────────────────────── -->
+  <section class="panel hidden" id="panel-output">
+    <div class="panel-header">
+      <div class="panel-step done-step">✓</div>
+      <div>
+        <h2 class="panel-title">Translation Complete</h2>
+        <p class="panel-desc">Your dubbed video with Tamil audio &amp; subtitles is ready</p>
+      </div>
+    </div>
+
+    <div class="output-layout">
+      <div class="output-player-wrap" id="output-player-wrap"></div>
+      <div class="output-actions">
+        <h4 class="actions-title">Download Files</h4>
+        <div id="download-list"></div>
+        <div class="output-stats" id="output-stats"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── TOASTS ────────────────────────────────────────────────────────────────── -->
+<div class="toast-stack" id="toast-stack"></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

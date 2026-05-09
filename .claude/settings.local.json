@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /Users/manibharthi/Downloads/VoiceTraslateSoftware/setup.sh /Users/manibharthi/Downloads/VoiceTraslateSoftware/run.sh)",
+      "Bash(venv/bin/pip install *)",
+      "Bash(venv/bin/python -c ' *)",
+      "Bash(venv/bin/python -c \"import app; print\\('App loads OK'\\)\")",
+      "Bash(venv/bin/pip show *)",
+      "Bash(python -c \"import whisper\")",
+      "Bash(venv/bin/python -c \"import librosa; print\\('librosa ok:', librosa.__version__\\)\")",
+      "Bash(python -c \"import librosa\")",
+      "Bash(fc-list)",
+      "Bash(system_profiler SPFontsDataType)",
+      "Bash(venv/bin/python -c \"import app; print\\('App OK'\\)\")"
+    ]
+  }
+}

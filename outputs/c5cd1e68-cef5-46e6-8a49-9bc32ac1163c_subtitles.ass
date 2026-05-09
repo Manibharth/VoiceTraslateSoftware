@@ -1,0 +1,42 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1280
+PlayResY: 720
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Tamil,Tamil Sangam MN,26,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2.5,1.5,2,20,20,35,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.00,Tamil,,0,0,0,,This is a story about overcoming obstacles.
+Dialogue: 0,0:00:03.00,0:00:06.00,Tamil,,0,0,0,,One day a farmer's donkey fell down into him.
+Dialogue: 0,0:00:06.00,0:00:09.00,Tamil,,0,0,0,,well. The animal cried pitiously for hours.
+Dialogue: 0,0:00:09.00,0:00:12.00,Tamil,,0,0,0,,as the farmer tried to figure out what to do.
+Dialogue: 0,0:00:12.00,0:00:15.00,Tamil,,0,0,0,,Finally, he decided the animal was old.
+Dialogue: 0,0:00:15.00,0:00:18.00,Tamil,,0,0,0,,and the whale needed to be covered up anyway. It just...
+Dialogue: 0,0:00:18.00,0:00:21.00,Tamil,,0,0,0,,guess wasn't worth it to retrieve the donkey.
+Dialogue: 0,0:00:21.00,0:00:24.00,Tamil,,0,0,0,,all of his neighbors to come over and help him.
+Dialogue: 0,0:00:24.00,0:00:27.00,Tamil,,0,0,0,,all grab the shovel and began to shovel dirt.
+Dialogue: 0,0:00:27.00,0:00:30.00,Tamil,,0,0,0,,into the well. At first, the donkey realises.
+Dialogue: 0,0:00:30.00,0:00:33.00,Tamil,,0,0,0,,what was happening and cried horribly. Then...
+Dialogue: 0,0:00:33.00,0:00:36.00,Tamil,,0,0,0,,to everyone's amazement he quieted down.
+Dialogue: 0,0:00:36.00,0:00:39.00,Tamil,,0,0,0,,few shovel loads later, the farmer finally looked at the
+Dialogue: 0,0:00:39.00,0:00:42.00,Tamil,,0,0,0,,down the well. He was astonished at what he saw with...
+Dialogue: 0,0:00:42.00,0:00:45.00,Tamil,,0,0,0,,each shovel of dirt that hit his back, the donkey.
+Dialogue: 0,0:00:45.00,0:00:48.00,Tamil,,0,0,0,,was doing something amazing. He would shake it off and take it.
+Dialogue: 0,0:00:48.00,0:00:51.00,Tamil,,0,0,0,,a step up as the farmers neighbors continued to
+Dialogue: 0,0:00:51.00,0:00:54.00,Tamil,,0,0,0,,shovel dirt on top of the enemy, he would shake it off.
+Dialogue: 0,0:00:54.00,0:00:57.00,Tamil,,0,0,0,,and take a step up. Pretty soon everyone was in
+Dialogue: 0,0:00:57.00,0:01:00.00,Tamil,,0,0,0,,as the doggy stepped up over the edge of the...
+Dialogue: 0,0:01:00.00,0:01:03.00,Tamil,,0,0,0,,well and happily trotted off. Life is...
+Dialogue: 0,0:01:03.00,0:01:06.00,Tamil,,0,0,0,,going to shovel dirt on you all kinds of dirt.
+Dialogue: 0,0:01:06.00,0:01:09.00,Tamil,,0,0,0,,The trick to getting out of the well is to shake it.
+Dialogue: 0,0:01:09.00,0:01:12.00,Tamil,,0,0,0,,off and take a step up each of our troubles.
+Dialogue: 0,0:01:12.00,0:01:15.00,Tamil,,0,0,0,,is a stepping stone. We can get out of the deepest
+Dialogue: 0,0:01:15.00,0:01:18.00,Tamil,,0,0,0,,just by not stopping never giving up.
+Dialogue: 0,0:01:18.00,0:01:21.00,Tamil,,0,0,0,,Shake it off and take a step up.
+Dialogue: 0,0:01:21.00,0:01:24.00,Tamil,,0,0,0,,you're not following the Biz Thoughts project, you're probably
+Dialogue: 0,0:01:24.00,0:01:27.00,Tamil,,0,0,0,,never going to see us again but if you are can bring
+Dialogue: 0,0:01:27.00,0:01:30.00,Tamil,,0,0,0,,threats. You're on a journey of continuous growth.
